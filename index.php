@@ -13,7 +13,7 @@ if(isset($_POST["submit"])){
 
 
     $sql = "INSERT INTO `employee` (Registration_number, Last_name, First_name, Birth_date, Department, Salary, Occupation, Picture) 
-    VALUES ('$number','$last','$first','$birth','$department','$salary','$occupation');";
+    VALUES ('$number','$last','$first','$birth','$department','$salary','$occupation','$picture');";
     $result = mysqli_query($conn,$sql);
     if($result){
         // echo "successful !!!!";

@@ -61,8 +61,8 @@ include "connection.php";
                 <td>'.$occupation.'</td>
                 <td>'.$picture.'</td>
                 <td>    
-                    <a><i class="bx bx-edit icon 2x "style="font-size:20px ; color:yellow"></i></a> 
-                    <a><i class="bx bx-trash icon 2x" style="font-size:20px ; color:purple"></i></a>
+                    <a href="edit.php?editRegistration_number='.$number.'"><i class="bx bx-edit icon 2x "style="font-size:20px ; color:yellow"></i></a> 
+                    <a href="delete.php?deleteRegistration_number='.$number.'"><i class="bx bx-trash icon 2x" style="font-size:20px ; color:purple"></i></a>
                 </td>
                 
               </tr>';

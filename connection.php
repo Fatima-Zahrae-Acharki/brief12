@@ -6,7 +6,8 @@ $dbPassword = "";
 $dbName = "employe managment";
 
 $conn = mysqli_connect($dbServername, $dbUsername, $dbPassword, $dbName);
-echo "helloooooo"
+echo "helloooooo";
+echo "<hr>";
 // if($conn){
 //     echo "successful !!!!";
 // }else{
