@@ -2,9 +2,6 @@
 
 include "connection.php";
 
-echo "hi";
-
-
 
 ?>
 <!DOCTYPE html>

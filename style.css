@@ -11,15 +11,22 @@
 .btn{
     background-color: #59ba89;
     color: #01575c;
+    border: none;
 }
 .btn:hover{
     background-color: #01575c;
     
 }
-button{
-    
+a{
+    text-decoration: none;
+    color: #01575c;
 }
-
+#bold{
+    color: #01575c;
+}
+#bd{
+    color: #59ba89;
+}
 
 .header {
     overflow: hidden;

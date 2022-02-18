@@ -20,13 +20,13 @@ include "header.php";
 </head>
 <body>
     <div class="container">
-        <button class="btn btn-primary my-5"><a href="add.php" class="text-light">Add employee</a>
+        <button class="btn  my-5"><a href="add.php" class="text-light">Add employee</a>
         </button>
 
 
         <table class="table table-responsive">
   <thead>
-    <tr>
+    <tr id="bold">
       <th scope="col">Registration number</th>
       <th scope="col">Last name</th>
       <th scope="col">First name</th>
@@ -54,7 +54,7 @@ include "header.php";
                 $occupation = $row["Occupation"];
                 $picture = $row["Picture"];
                 echo '<tr>
-                <th scope="row">'.$number.'</th>
+                <th scope="row" id="bd">'.$number.'</th>
                 <td>'.$last.'</td>
                 <td>'.$first.'</td>
                 <td>'.$birth.'</td>
