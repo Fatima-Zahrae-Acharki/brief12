@@ -1,100 +1,104 @@
 <?php
-include "connection.php";
+
+include 'connection.php';
+if(isset($_POST["submit"])){
+    $number = $_POST["Registration_number"];
+    $last = $_POST["Last_name"];
+    $first = $_POST["First_name"];
+    $birth = $_POST["Birth_date"];
+    $department = $_POST["Department"];
+    $salary = $_POST["Salary"];
+    $occupation = $_POST["Occupation"];
+    $picture = $_FILES["Picture"]["name"];
+    $tmp_picture = $_FILES["Picture"]["tmp_name"];
+    $filelocation = "img/".$picture;
+
+
+    $sql = "INSERT INTO `employee` (Registration_number, Last_name, First_name, Birth_date, Department, Salary, Occupation, Picture) 
+    VALUES ('$number','$last','$first','$birth','$department','$salary','$occupation','$picture');";
+    $result = mysqli_query($conn,$sql);
+    move_uploaded_file($tmp_picture,$filelocation);
+    if($result){
+        // echo "successful !!!!";
+        header('location: index.php');
+    }else{
+        die(mysqli_error($conn));
+    }
+    
+}
 
 ?>
 
 
+
 <!DOCTYPE html>
-<html lang="en">
+<html>
 <head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>added employee</title>
-    <link href='https://unpkg.com/boxicons@2.1.1/css/boxicons.min.css' rel='stylesheet'>
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css ">
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet">
+<meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>form</title>
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
 </head>
 <body>
-    <div class="container">
-        <button class="btn btn-primary my-5"><a href="index.php" class="text-light">Add employee</a>
-        </button>
+
+    <form  method = "POST" enctype="multipart/form-data" >
+        <br><br>
+        <div class="row">
+            <div class="col"> 
+            </div>
+            <div class="col">
+                <input type="text" class="form-control" placeholder="Registration_number" name="Registration_number">
+            </div>
+            <div class="col">
+                <input type="text" class="form-control" placeholder="Last_name" name="Last_name">
+            </div>
+            <div class="col">
+                <input type="text" class="form-control" placeholder="First_name" name="First_name">
+            </div>
+            <div class="col">
+                <input type="date" class="form-control" placeholder="Birth_date" name="Birth_date">
+            </div>
+            <div class="col">
+            </div>
+        </div>
+        <br><br>
+        <div class="row">
+            <div class="col">
+            </div>
+            <div class="col">
+                <input type="text" class="form-control" placeholder="Department" name="Department">
+            </div>
+            <div class="col">
+                <input type="number" class="form-control" placeholder="Salary" name="Salary">
+            </div>
+            <div class="col">
+                <input type="text" class="form-control" placeholder="Occupation" name="Occupation">
+            </div>
+            <div class="col">
+                <input type="file" class="form-control" placeholder="Picture" name="Picture">
+            </div>
+            <div class="col">
+            </div>
+        </div>
+        <button type = "submit" name = "submit" class="btn btn-primary" id="btn">submit</button>
+    </form>
+
+ 
 
 
-        <table class="table">
-  <thead>
-    <tr>
-      <th scope="col">Registration number</th>
-      <th scope="col">Last name</th>
-      <th scope="col">First name</th>
-      <th scope="col">Birth date</th>
-      <th scope="col">Department</th>
-      <th scope="col">Salary</th>
-      <th scope="col">Occupation</th>
-      <th scope="col">Picture</th>
-      <th scope="col">Action</th>
-    </tr>
-  </thead>
-  <tbody>
-        <?php
-        
-        $sql = "SELECT * FROM employee;";
-        $result =mysqli_query($conn, $sql);
-        if($result){
-            while($row=mysqli_fetch_assoc($result)){
-                $number = $row["Registration_number"];
-                $last = $row["Last_name"];
-                $first = $row["First_name"];
-                $birth = $row["Birth_date"];
-                $department = $row["Department"];
-                $salary = $row["Salary"];
-                $occupation = $row["Occupation"];
-                $picture = $row["Picture"];
-                echo '<tr>
-                <th scope="row">'.$number.'</th>
-                <td>'.$last.'</td>
-                <td>'.$first.'</td>
-                <td>'.$birth.'</td>
-                <td>'.$department.'</td>
-                <td>'.$salary.'</td>
-                <td>'.$occupation.'</td>
-                <td>'.$picture.'</td>
-                <td>    
-                    <a href="edit.php?editRegistration_number='.$number.'"><i class="bx bx-edit icon 2x "style="font-size:20px ; color:yellow"></i></a> 
-                    <a href="delete.php?deleteRegistration_number='.$number.'"><i class="bx bx-trash icon 2x" style="font-size:20px ; color:purple"></i></a>
-                </td>
-                
-              </tr>';
-            }
-        }
-        
-        
-        ?>
+    <?php
+        // $sql = "INSERT INTO employee (Registration_number, Last_name, First_name, Birth_date, Department, Salary, Occupation, Picture) 
+        // VALUES ('1123' , 'Shoto' , 'Todoroki' , '14/03/2001' , 39999 , 'administration' , 'chef' );";
+        // // "SELECT * FROM employee;";
+        // $result = mysqli_query($conn, $sql);
+        // $test = mysqli_num_rows($result);
 
-
-
-    <!-- <tr>
-      <th scope="row">1</th>
-      <td>Mark</td>
-      <td>Otto</td>
-      <td>@mdo</td>
-    </tr>
-    <tr>
-      <th scope="row">2</th>
-      <td>Jacob</td>
-      <td>Thornton</td>
-      <td>@fat</td>
-    </tr>
-    <tr>
-      <th scope="row">3</th>
-      <td>Larry</td>
-      <td>the Bird</td>
-      <td>@twitter</td>
-    </tr> -->
-  </tbody>
-</table>
-    </div>
-    
+        // if($test > 0){
+        //     while($row = mysqli_fetch_assoc($result)){
+        //         echo $row['First name'] . "<br>" ;
+        //     }
+        // }
+    ?>
 </body>
 </html>

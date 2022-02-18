@@ -1,0 +1,67 @@
+.mypictures{
+    width: 80px;
+    height: 80px;
+}
+
+/* #e1f396 */
+/* #59ba89 */
+/* #01575c */
+
+
+.btn{
+    background-color: #59ba89;
+    color: #01575c;
+}
+.btn:hover{
+    background-color: #01575c;
+    
+}
+button{
+    
+}
+
+
+.header {
+    overflow: hidden;
+    background-color: #fdfff6;
+    padding: 20px 10px;
+  }
+ 
+  .header a {
+    float: left;
+    color: #01575c;
+    text-align: center;
+    padding: 12px;
+    text-decoration: none;
+    font-size: 18px;
+    line-height: 25px;
+    border-radius: 4px;
+  }
+  
+ 
+
+  .header a:hover {
+    background-color: #59ba89;
+    color: black;
+  }
+  
+  .header a.active {
+    background-color: #e1f396;
+    color: #01575c;
+  }
+  
+  
+  .header-right {
+    float: right;
+  }
+  
+  @media screen and (max-width: 500px) {
+    .header a {
+      float: none;
+      display: block;
+      text-align: left;
+    }
+    .header-right {
+      float: none;
+    }
+  }
