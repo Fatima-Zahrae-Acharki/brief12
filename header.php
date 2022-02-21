@@ -6,6 +6,7 @@ include "connection.php";
 ?>
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -15,14 +16,16 @@ include "connection.php";
     <link rel="stylesheet" href="style.css">
     <title>Document</title>
 </head>
+
 <body>
     <div class="header">
-    <img src="employee.png" class="logo" height="50px"></img>
-    <div class="header-right">
-        <a class="active" href="#home">Home</a>
-        <a href="search.php">Search</a>
-        <a href="#about">About</a>
-    </div>
+        <img src="employee.png" class="logo" height="50px"></img>
+        <div class="header-right">
+            <a class="active" href="#home">Home</a>
+            <a href="search.php">Search</a>
+            <a href="#about">About</a>
+        </div>
     </div>
 </body>
+
 </html>

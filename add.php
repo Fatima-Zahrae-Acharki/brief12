@@ -1,7 +1,7 @@
 <?php
 
 include 'connection.php';
-if(isset($_POST["submit"])){
+if (isset($_POST["submit"])) {
     $number = $_POST["Registration_number"];
     $last = $_POST["Last_name"];
     $first = $_POST["First_name"];
@@ -11,20 +11,19 @@ if(isset($_POST["submit"])){
     $occupation = $_POST["Occupation"];
     $picture = $_FILES["Picture"]["name"];
     $tmp_picture = $_FILES["Picture"]["tmp_name"];
-    $filelocation = "img/".$picture;
+    $filelocation = "img/" . $picture;
 
 
     $sql = "INSERT INTO `employee` (Registration_number, Last_name, First_name, Birth_date, Department, Salary, Occupation, Picture) 
     VALUES ('$number','$last','$first','$birth','$department','$salary','$occupation','$picture');";
-    $result = mysqli_query($conn,$sql);
-    move_uploaded_file($tmp_picture,$filelocation);
-    if($result){
+    $result = mysqli_query($conn, $sql);
+    move_uploaded_file($tmp_picture, $filelocation);
+    if ($result) {
         // echo "successful !!!!";
         header('location: index.php');
-    }else{
+    } else {
         die(mysqli_error($conn));
     }
-    
 }
 
 ?>
@@ -33,19 +32,21 @@ if(isset($_POST["submit"])){
 
 <!DOCTYPE html>
 <html>
+
 <head>
-<meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>form</title>
-<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet">
-<link rel="stylesheet" href="style.css">
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>form</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
 </head>
+
 <body>
 
-    <form  method = "POST" enctype="multipart/form-data" >
+    <form method="POST" enctype="multipart/form-data">
         <br><br>
         <div class="row">
-            <div class="col"> 
+            <div class="col">
             </div>
             <div class="col">
                 <input type="text" class="form-control" placeholder="Registration_number" name="Registration_number">
@@ -81,24 +82,25 @@ if(isset($_POST["submit"])){
             <div class="col">
             </div>
         </div>
-        <button type = "submit" name = "submit" class="btn btn-primary" id="btn">submit</button>
+        <button type="submit" name="submit" class="btn btn-primary" id="btn">submit</button>
     </form>
 
- 
+
 
 
     <?php
-        // $sql = "INSERT INTO employee (Registration_number, Last_name, First_name, Birth_date, Department, Salary, Occupation, Picture) 
-        // VALUES ('1123' , 'Shoto' , 'Todoroki' , '14/03/2001' , 39999 , 'administration' , 'chef' );";
-        // // "SELECT * FROM employee;";
-        // $result = mysqli_query($conn, $sql);
-        // $test = mysqli_num_rows($result);
+    // $sql = "INSERT INTO employee (Registration_number, Last_name, First_name, Birth_date, Department, Salary, Occupation, Picture) 
+    // VALUES ('1123' , 'Shoto' , 'Todoroki' , '14/03/2001' , 39999 , 'administration' , 'chef' );";
+    // // "SELECT * FROM employee;";
+    // $result = mysqli_query($conn, $sql);
+    // $test = mysqli_num_rows($result);
 
-        // if($test > 0){
-        //     while($row = mysqli_fetch_assoc($result)){
-        //         echo $row['First name'] . "<br>" ;
-        //     }
-        // }
+    // if($test > 0){
+    //     while($row = mysqli_fetch_assoc($result)){
+    //         echo $row['First name'] . "<br>" ;
+    //     }
+    // }
     ?>
 </body>
+
 </html>
